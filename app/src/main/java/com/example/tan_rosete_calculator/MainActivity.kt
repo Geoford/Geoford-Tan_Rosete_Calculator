@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     private var operation = ""
     private var firstNum = 0.0
     private var waitingForSecondOperand = false
+    private var clearism = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,22 +65,108 @@ class MainActivity : AppCompatActivity() {
         button9 = findViewById(R.id.button_9)
 
         // Set up button listeners
-        button0.setOnClickListener { appendNumber("0") }
-        button1.setOnClickListener { appendNumber("1") }
-        button2.setOnClickListener { appendNumber("2") }
-        button3.setOnClickListener { appendNumber("3") }
-        button4.setOnClickListener { appendNumber("4") }
-        button5.setOnClickListener { appendNumber("5") }
-        button6.setOnClickListener { appendNumber("6") }
-        button7.setOnClickListener { appendNumber("7") }
-        button8.setOnClickListener { appendNumber("8") }
-        button9.setOnClickListener { appendNumber("9") }
+        button0.setOnClickListener {
+            if(clearism) {
+                clear()
+                clearism = false
+            }
+            appendNumber("0")
+        }
+
+        button1.setOnClickListener {
+            if(clearism) {
+                clear()
+                clearism = false
+            }
+            appendNumber("1")
+        }
+
+        button2.setOnClickListener {
+            if(clearism) {
+                clear()
+                clearism = false
+            }
+            appendNumber("2")
+        }
+
+        button3.setOnClickListener {
+            if(clearism) {
+                clear()
+                clearism = false
+            }
+            appendNumber("3")
+        }
+
+        button4.setOnClickListener {
+            if(clearism) {
+                clear()
+                clearism = false
+            }
+            appendNumber("4")
+        }
+
+        button5.setOnClickListener {
+            if(clearism) {
+                clear()
+                clearism = false
+            }
+            appendNumber("5")
+        }
+
+        button6.setOnClickListener {
+            if(clearism) {
+                clear()
+                clearism = false
+            }
+            appendNumber("6")
+        }
+
+        button7.setOnClickListener {
+            if(clearism) {
+                clear()
+                clearism = false
+            }
+            appendNumber("7")
+        }
+
+        button8.setOnClickListener {
+            if(clearism) {
+                clear()
+                clearism = false
+            }
+            appendNumber("8")
+        }
+
+        button9.setOnClickListener {
+            if(clearism) {
+                clear()
+                clearism = false
+            }
+            appendNumber("9")
+        }
+
         buttonDot.setOnClickListener { appendDot() }
 
-        buttonPlus.setOnClickListener { setOperation("+") }
-        buttonMinus.setOnClickListener { setOperation("-") }
-        buttonMultiply.setOnClickListener { setOperation("*") }
-        buttonDivide.setOnClickListener { setOperation("/") }
+        buttonPlus.setOnClickListener {
+            setOperation("+")
+            clearism = false
+        }
+
+        buttonMinus.setOnClickListener {
+            setOperation("-")
+            clearism = false
+        }
+
+        buttonMultiply.setOnClickListener {
+            setOperation("*")
+            clearism = false
+        }
+
+        buttonDivide.setOnClickListener {
+            setOperation("/")
+            clearism = false
+        }
+
 
         buttonEquals.setOnClickListener { calculateResult() }
         buttonC.setOnClickListener { clear() }
@@ -158,6 +245,7 @@ class MainActivity : AppCompatActivity() {
         operation = ""
         firstNum = finalResult
         waitingForSecondOperand = true
+        clearism = true
     }
 
 
