@@ -206,7 +206,16 @@ class MainActivity : AppCompatActivity() {
     // Sets the operation (+, -, *, /)
     private fun setOperation(op: String) {
         if (input.isNotEmpty()) {
-            firstNum = input.toDoubleOrNull() ?: 0.0 // Store the first operand
+            val currentNum = input.toDoubleOrNull() ?: 0.0
+
+            if (operation.isNotEmpty()) {
+                // If there's an existing operation, calculate the result so far
+                firstNum = performOperation(firstNum, currentNum, operation)
+            } else {
+                // Otherwise, set the first number
+                firstNum = currentNum
+            }
+
             operation = op // Store the operation
             waitingForSecondOperand = true // Flag that we're waiting for the second operand
             solutionTv.text = solutionTv.text.toString() + op // Update the solution display
@@ -223,6 +232,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Performs the arithmetic operation based on the passed operator
+    private fun performOperation(firstNum: Double, secondNum: Double, operation: String): Double {
+        return when (operation) {
+            "+" -> firstNum + secondNum
+            "-" -> firstNum - secondNum
+            "*" -> firstNum * secondNum
+            "/" -> firstNum / secondNum
+            else -> secondNum
+        }
+    }
+
+
     // Calculates the final result
     private fun calculateResult() {
         if (input.isEmpty() && operation.isNotEmpty()) {
@@ -232,19 +253,8 @@ class MainActivity : AppCompatActivity() {
 
         if (input.isEmpty() && operation.isEmpty()) return
 
-        // If there's no input but there's an ongoing operation, use the firstNum again
-        if (input.isEmpty() && operation.isNotEmpty()) {
-            input = firstNum.toString()
-        }
-
-        val secondNum = input.toDoubleOrNull() ?: return // Parse the second operand
-        val finalResult = when (operation) {
-            "+" -> firstNum + secondNum
-            "-" -> firstNum - secondNum
-            "*" -> firstNum * secondNum
-            "/" -> firstNum / secondNum
-            else -> secondNum
-        }
+        val currentNum = input.toDoubleOrNull() ?: 0.0
+        val finalResult = performOperation(firstNum, currentNum, operation) // Calculate the result
 
         val formattedResult = formatOutput(finalResult) // Format the result
         resultTv.text = formattedResult // Display the result
@@ -257,6 +267,7 @@ class MainActivity : AppCompatActivity() {
         waitingForSecondOperand = true
         clearism = true // Set the flag to clear the display on the next input
     }
+
 
     // Clears the display and resets all variables
     private fun clear() {
