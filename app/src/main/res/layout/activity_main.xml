@@ -10,6 +10,7 @@
     android:background="#1C1C1C"
     tools:context=".MainActivity">
 
+    <!-- TextView for displaying the solution -->
     <TextView
         android:id="@+id/solution_tv"
         android:layout_width="match_parent"
@@ -23,6 +24,7 @@
         android:textColor="@color/white"
         android:textSize="32dp" />
 
+    <!-- TextView for displaying the result -->
     <TextView
         android:id="@+id/result_tv"
         android:layout_width="match_parent"
@@ -36,7 +38,6 @@
         android:textAlignment="textEnd"
         android:textColor="@color/white"
         android:textSize="64dp" />
-
 
     <LinearLayout
         android:id="@+id/buttons_layout"
@@ -53,6 +54,7 @@
             android:gravity="center"
             android:orientation="horizontal">
 
+            <!-- Button for clearing the input (AC) -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_c"
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -65,6 +67,7 @@
                 android:textSize="25dp"
                 app:cornerRadius="50dp" />
 
+            <!-- Button for toggling between positive and negative numbers (+/-) -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/positive_negative"
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -77,6 +80,7 @@
                 android:textSize="20dp"
                 app:cornerRadius="50dp" />
 
+            <!-- Button for calculating percentage (%) -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/percent"
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -89,6 +93,7 @@
                 android:textSize="32dp"
                 app:cornerRadius="50dp" />
 
+            <!-- Button for division (÷) -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_divide"
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -109,6 +114,7 @@
             android:gravity="center"
             android:orientation="horizontal">
 
+            <!-- Button for number 7 -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_7"
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -121,6 +127,7 @@
                 android:textSize="32dp"
                 app:cornerRadius="50dp" />
 
+            <!-- Button for number 8 -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_8"
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -133,6 +140,7 @@
                 android:textSize="32dp"
                 app:cornerRadius="50dp" />
 
+            <!-- Button for number 9 -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_9"
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -145,6 +153,7 @@
                 android:textSize="32dp"
                 app:cornerRadius="50dp" />
 
+            <!-- Button for multiplication (×) -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_multiply"
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -159,11 +168,9 @@
 
         </LinearLayout>
 
-
-<!--    Cheater Checker: Created by John Kenneth Tan, DO NOT REPLICATE WITHOUT MY PERMISSION-->
-<!--    4th year na tayo, hilig niyo pa rin mangopya??-->
-<!--    maawa naman kayo sa magulang niyo-->
-
+        <!-- Cheater Checker: Created by John Kenneth Tan, DO NOT REPLICATE WITHOUT MY PERMISSION -->
+        <!-- 4th year na tayo, hilig niyo pa rin mangopya?? -->
+        <!-- maawa naman kayo sa magulang niyo -->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -171,6 +178,7 @@
             android:gravity="center"
             android:orientation="horizontal">
 
+            <!-- Button for number 4 -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_4"
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -183,6 +191,7 @@
                 android:textSize="32dp"
                 app:cornerRadius="50dp" />
 
+            <!-- Button for number 5 -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_5"
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -195,6 +204,7 @@
                 android:textSize="32dp"
                 app:cornerRadius="50dp" />
 
+            <!-- Button for number 6 -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_6"
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -207,6 +217,7 @@
                 android:textSize="32dp"
                 app:cornerRadius="50dp" />
 
+            <!-- Button for subtraction (-) -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_minus"
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -227,6 +238,7 @@
             android:gravity="center"
             android:orientation="horizontal">
 
+            <!-- Button for number 1 -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_1"
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -239,6 +251,7 @@
                 android:textSize="32dp"
                 app:cornerRadius="50dp" />
 
+            <!-- Button for number 2 -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_2"
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -251,6 +264,7 @@
                 android:textSize="32dp"
                 app:cornerRadius="50dp" />
 
+            <!-- Button for number 3 -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_3"
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -263,6 +277,7 @@
                 android:textSize="32dp"
                 app:cornerRadius="50dp" />
 
+            <!-- Button for addition (+) -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_plus"
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -283,19 +298,20 @@
             android:gravity="center"
             android:orientation="horizontal">
 
+            <!-- Button for number 0 -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_0"
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
-                android:layout_width="168dp"
-                android:layout_height="72dp"
+                android:layout_width="174dp"
+                android:layout_height="78dp"
                 android:layout_margin="6dp"
                 android:backgroundTint="#505050"
-                android:gravity="left"
-                android:text=" 0"
+                android:text="0"
                 android:textColor="@color/white"
                 android:textSize="32dp"
                 app:cornerRadius="50dp" />
 
+            <!-- Button for decimal point (.) -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_dot"
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -308,6 +324,7 @@
                 android:textSize="32dp"
                 app:cornerRadius="50dp" />
 
+            <!-- Button for equals (=) -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_equals"
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -321,10 +338,5 @@
                 app:cornerRadius="50dp" />
 
         </LinearLayout>
-
-
     </LinearLayout>
-
-
-
 </RelativeLayout>
