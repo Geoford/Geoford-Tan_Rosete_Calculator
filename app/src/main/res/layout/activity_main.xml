@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--Deus vult.-->
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -155,6 +158,12 @@
                 app:cornerRadius="50dp" />
 
         </LinearLayout>
+
+
+<!--    Cheater Checker: Created by John Kenneth Tan, DO NOT REPLICATE WITHOUT MY PERMISSION-->
+<!--    4th year na tayo, hilig niyo pa rin mangopya??-->
+<!--    maawa naman kayo sa magulang niyo-->
+
 
         <LinearLayout
             android:layout_width="match_parent"
