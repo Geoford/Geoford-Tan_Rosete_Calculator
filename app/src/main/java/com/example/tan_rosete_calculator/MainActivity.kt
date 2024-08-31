@@ -7,6 +7,7 @@ import com.google.android.material.button.MaterialButton
 import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
+    // Declaring UI components
     private lateinit var resultTv: TextView
     private lateinit var solutionTv: TextView
     private lateinit var buttonC: MaterialButton
@@ -29,11 +30,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var button8: MaterialButton
     private lateinit var button9: MaterialButton
 
-    private var input = ""
-    private var operation = ""
-    private var firstNum = 0.0
-    private var waitingForSecondOperand = false
-    private var clearism = false
+    // Variables for calculator logic
+    private var input = "" // Stores the current input
+    private var operation = "" // Stores the current operation (+, -, *, /)
+    private var firstNum = 0.0 // Stores the first operand
+    private var waitingForSecondOperand = false // Flag to check if waiting for the second operand
+    private var clearism = false // Flag to determine when to clear the display
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,7 +66,8 @@ class MainActivity : AppCompatActivity() {
         button8 = findViewById(R.id.button_8)
         button9 = findViewById(R.id.button_9)
 
-        // Set up button listeners
+        // Set up button listeners for numbers
+        // Checks if 'clearism' is true, clears display, and resets 'clearism' before appending the number
         button0.setOnClickListener {
             if(clearism) {
                 clear()
@@ -145,8 +148,10 @@ class MainActivity : AppCompatActivity() {
             appendNumber("9")
         }
 
-        buttonDot.setOnClickListener { appendDot() }
+        buttonDot.setOnClickListener { appendDot() } // Handles the decimal point
 
+        // Set up button listeners for operations
+        // Resets 'clearism' after setting the operation
         buttonPlus.setOnClickListener {
             setOperation("+")
             clearism = false
@@ -167,28 +172,29 @@ class MainActivity : AppCompatActivity() {
             clearism = false
         }
 
-
-        buttonEquals.setOnClickListener { calculateResult() }
-        buttonC.setOnClickListener { clear() }
-        buttonPlusMinus.setOnClickListener { toggleSign() }
-        buttonPercent.setOnClickListener { applyPercentage() }
+        buttonEquals.setOnClickListener { calculateResult() } // Calculates the result when equals is pressed
+        buttonC.setOnClickListener { clear() } // Clears the display
+        buttonPlusMinus.setOnClickListener { toggleSign() } // Toggles the sign of the current input
+        buttonPercent.setOnClickListener { applyPercentage() } // Converts the current input to a percentage
     }
 
+    // Appends a number to the current input
     private fun appendNumber(number: String) {
         if (waitingForSecondOperand) {
+            // If waiting for the second operand, replace the current input with the new number
             input = number
             waitingForSecondOperand = false
-            // Clear solutionTv only if starting a completely new equation
             if (solutionTv.text.isEmpty()) {
                 solutionTv.text = ""
             }
         } else {
             input += number
         }
-        resultTv.text = formatOutput(input.toDoubleOrNull() ?: 0.0)
-        solutionTv.text = solutionTv.text.toString() + number
+        resultTv.text = formatOutput(input.toDoubleOrNull() ?: 0.0) // Update the result display
+        solutionTv.text = solutionTv.text.toString() + number // Update the solution display
     }
 
+    // Appends a decimal point to the current input
     private fun appendDot() {
         if (!input.contains(".")) {
             input += "."
@@ -197,13 +203,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Sets the operation (+, -, *, /)
     private fun setOperation(op: String) {
         if (input.isNotEmpty()) {
-            firstNum = input.toDoubleOrNull() ?: 0.0
-            operation = op
-            waitingForSecondOperand = true
-            solutionTv.text = solutionTv.text.toString() + op
-            input = ""
+            firstNum = input.toDoubleOrNull() ?: 0.0 // Store the first operand
+            operation = op // Store the operation
+            waitingForSecondOperand = true // Flag that we're waiting for the second operand
+            solutionTv.text = solutionTv.text.toString() + op // Update the solution display
+            input = "" // Reset the input
         } else if (operation.isEmpty()) {
             // No input but an operation is set, reuse firstNum
             operation = op
@@ -216,18 +223,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
-
+    // Calculates the final result
     private fun calculateResult() {
         if (input.isEmpty() && operation.isEmpty()) return
 
-        // If there's no input but there's an ongoing operation, treat it as using the firstNum again
+        // If there's no input but there's an ongoing operation, use the firstNum again
         if (input.isEmpty() && operation.isNotEmpty()) {
             input = firstNum.toString()
         }
 
-        val secondNum = input.toDoubleOrNull() ?: return
+        val secondNum = input.toDoubleOrNull() ?: return // Parse the second operand
         val finalResult = when (operation) {
             "+" -> firstNum + secondNum
             "-" -> firstNum - secondNum
@@ -236,37 +241,19 @@ class MainActivity : AppCompatActivity() {
             else -> secondNum
         }
 
-        val formattedResult = formatOutput(finalResult)
-        resultTv.text = formattedResult
-        solutionTv.text = formattedResult
+        val formattedResult = formatOutput(finalResult) // Format the result
+        resultTv.text = formattedResult // Display the result
+        solutionTv.text = formattedResult // Update the solution display
 
-        // Reset the input and operation for a new calculation
+        // Reset for a new calculation
         input = ""
         operation = ""
         firstNum = finalResult
         waitingForSecondOperand = true
-        clearism = true
+        clearism = true // Set the flag to clear the display on the next input
     }
 
-
-
-
-    private fun calculateIntermediateResult() {
-        if (input.isNotEmpty()) {
-            val secondNum = input.toDoubleOrNull() ?: return
-            firstNum = when (operation) {
-                "+" -> firstNum + secondNum
-                "-" -> firstNum - secondNum
-                "*" -> firstNum * secondNum
-                "/" -> firstNum / secondNum
-                else -> secondNum
-            }
-            input = ""
-            resultTv.text = formatOutput(firstNum)
-        }
-    }
-
-
+    // Clears the display and resets all variables
     private fun clear() {
         input = ""
         firstNum = 0.0
@@ -276,29 +263,24 @@ class MainActivity : AppCompatActivity() {
         waitingForSecondOperand = false
     }
 
+    // Toggles the sign of the current input
     private fun toggleSign() {
         if (input.isNotEmpty()) {
-            // Toggle the sign of the input
             input = if (input.startsWith("-")) {
                 input.substring(1) // Remove the minus sign if it exists
             } else {
                 "-$input" // Add a minus sign if it doesn't exist
             }
 
-            // Update the result display
+            // Update the result and solution displays
             resultTv.text = input
-
-            // Update the solution display
             val currentSolutionText = solutionTv.text.toString()
-
-            // Remove the previous number from solutionTv to avoid multiple signs
             val updatedSolutionText = currentSolutionText.dropLastWhile { it.isDigit() || it == '.' || it == '-' }
-
-            // Add the toggled number to the solutionTv
             solutionTv.text = updatedSolutionText + input
         }
     }
 
+    // Converts the current input to a percentage
     private fun applyPercentage() {
         if (input.isNotEmpty()) {
             val num = input.toDoubleOrNull()
@@ -309,12 +291,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Formats the output for display (e.g., with commas and rounding)
     private fun formatOutput(number: Double): String {
         return if (number % 1 == 0.0) {
-            DecimalFormat("#,###").format(number)
+            DecimalFormat("#,###").format(number) // No decimal places if the number is whole
         } else {
-            DecimalFormat("#,###.##").format(number)
+            DecimalFormat("#,###.##").format(number) // Two decimal places if the number has a fraction
         }
     }
-
 }
