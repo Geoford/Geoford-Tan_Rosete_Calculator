@@ -6,12 +6,16 @@ import android.widget.TextView
 import com.google.android.material.button.MaterialButton
 import java.text.DecimalFormat
 
+
+//Deus vult.
+
+
 class MainActivity : AppCompatActivity() {
     // Declaring UI components
     private lateinit var resultTv: TextView
     private lateinit var solutionTv: TextView
     private lateinit var buttonC: MaterialButton
-    private lateinit var buttonPlusMinus: MaterialButton
+    private lateinit var PositiveNegative: MaterialButton
     private lateinit var buttonPercent: MaterialButton
     private lateinit var buttonDivide: MaterialButton
     private lateinit var buttonMultiply: MaterialButton
@@ -35,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     private var operation = "" // Stores the current operation (+, -, *, /)
     private var firstNum = 0.0 // Stores the first operand
     private var waitingForSecondOperand = false // Flag to check if waiting for the second operand
-    private var clearism = false // Flag to determine when to clear the display
+    private var ClearChecker = false // Flag to determine when to clear the display
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
         // Initialize Buttons
         buttonC = findViewById(R.id.button_c)
-        buttonPlusMinus = findViewById(R.id.positive_negative)
+        PositiveNegative = findViewById(R.id.positive_negative)
         buttonPercent = findViewById(R.id.percent)
         buttonDivide = findViewById(R.id.button_divide)
         buttonMultiply = findViewById(R.id.button_multiply)
@@ -67,83 +71,83 @@ class MainActivity : AppCompatActivity() {
         button9 = findViewById(R.id.button_9)
 
         // Set up button listeners for numbers
-        // Checks if 'clearism' is true, clears display, and resets 'clearism' before appending the number
+        // Checks if 'ClearChecker' is true, clears display, and resets 'ClearChecker' before appending the number
         button0.setOnClickListener {
-            if(clearism) {
+            if(ClearChecker) {
                 clear()
-                clearism = false
+                ClearChecker = false
             }
             appendNumber("0")
         }
 
         button1.setOnClickListener {
-            if(clearism) {
+            if(ClearChecker) {
                 clear()
-                clearism = false
+                ClearChecker = false
             }
             appendNumber("1")
         }
 
         button2.setOnClickListener {
-            if(clearism) {
+            if(ClearChecker) {
                 clear()
-                clearism = false
+                ClearChecker = false
             }
             appendNumber("2")
         }
 
         button3.setOnClickListener {
-            if(clearism) {
+            if(ClearChecker) {
                 clear()
-                clearism = false
+                ClearChecker = false
             }
             appendNumber("3")
         }
 
         button4.setOnClickListener {
-            if(clearism) {
+            if(ClearChecker) {
                 clear()
-                clearism = false
+                ClearChecker = false
             }
             appendNumber("4")
         }
 
         button5.setOnClickListener {
-            if(clearism) {
+            if(ClearChecker) {
                 clear()
-                clearism = false
+                ClearChecker = false
             }
             appendNumber("5")
         }
 
         button6.setOnClickListener {
-            if(clearism) {
+            if(ClearChecker) {
                 clear()
-                clearism = false
+                ClearChecker = false
             }
             appendNumber("6")
         }
 
         button7.setOnClickListener {
-            if(clearism) {
+            if(ClearChecker) {
                 clear()
-                clearism = false
+                ClearChecker = false
             }
             appendNumber("7")
         }
 
         button8.setOnClickListener {
-            if(clearism) {
+            if(ClearChecker) {
                 clear()
-                clearism = false
+                ClearChecker = false
             }
             appendNumber("8")
         }
 
         button9.setOnClickListener {
-            if(clearism) {
+            if(ClearChecker) {
                 clear()
-                clearism = false
+                ClearChecker = false
             }
             appendNumber("9")
         }
@@ -151,30 +155,30 @@ class MainActivity : AppCompatActivity() {
         buttonDot.setOnClickListener { appendDot() } // Handles the decimal point
 
         // Set up button listeners for operations
-        // Resets 'clearism' after setting the operation
+        // Resets 'ClearChecker' after setting the operation
         buttonPlus.setOnClickListener {
             setOperation("+")
-            clearism = false
+            ClearChecker = false
         }
 
         buttonMinus.setOnClickListener {
             setOperation("-")
-            clearism = false
+            ClearChecker = false
         }
 
         buttonMultiply.setOnClickListener {
             setOperation("*")
-            clearism = false
+            ClearChecker = false
         }
 
         buttonDivide.setOnClickListener {
             setOperation("/")
-            clearism = false
+            ClearChecker = false
         }
 
         buttonEquals.setOnClickListener { calculateResult() } // Calculates the result when equals is pressed
         buttonC.setOnClickListener { clear() } // Clears the display
-        buttonPlusMinus.setOnClickListener { toggleSign() } // Toggles the sign of the current input
+        PositiveNegative.setOnClickListener { toggleSign() } // Toggles the sign of the current input
         buttonPercent.setOnClickListener { applyPercentage() } // Converts the current input to a percentage
     }
 
@@ -202,6 +206,10 @@ class MainActivity : AppCompatActivity() {
             resultTv.text = input
         }
     }
+
+    // Cheater Checker: Created by John Kenneth Tan, DO NOT REPLICATE WITHOUT MY PERMISSION
+    // 4th year na tayo, hilig niyo pa rin mangopya??
+    // maawa naman kayo sa magulang niyo
 
     // Sets the operation (+, -, *, /)
     private fun setOperation(op: String) {
@@ -265,7 +273,7 @@ class MainActivity : AppCompatActivity() {
         operation = ""
         firstNum = finalResult
         waitingForSecondOperand = true
-        clearism = true // Set the flag to clear the display on the next input
+        ClearChecker = true // Set the flag to clear the display on the next input
     }
 
 
