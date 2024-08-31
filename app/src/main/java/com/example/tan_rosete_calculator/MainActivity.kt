@@ -225,6 +225,11 @@ class MainActivity : AppCompatActivity() {
 
     // Calculates the final result
     private fun calculateResult() {
+        if (input.isEmpty() && operation.isNotEmpty()) {
+            // If the input is empty and there's an operation, don't allow equals to be pressed
+            return
+        }
+
         if (input.isEmpty() && operation.isEmpty()) return
 
         // If there's no input but there's an ongoing operation, use the firstNum again
