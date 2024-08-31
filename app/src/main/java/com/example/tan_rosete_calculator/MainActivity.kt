@@ -130,6 +130,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
+
     private fun calculateResult() {
         if (input.isEmpty() && operation.isEmpty()) return
 
